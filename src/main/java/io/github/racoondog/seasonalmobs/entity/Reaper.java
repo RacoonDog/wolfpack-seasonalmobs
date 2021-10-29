@@ -1,6 +1,7 @@
 package io.github.racoondog.seasonalmobs.entity;
 
 import io.github.racoondog.seasonalmobs.util.Chat;
+import io.github.racoondog.seasonalmobs.util.Item;
 import io.github.racoondog.seasonalmobs.util.Math;
 import org.bukkit.Color;
 import org.bukkit.Material;
@@ -17,6 +18,7 @@ public class Reaper {
         LeatherArmorMeta chestplateMeta = (LeatherArmorMeta) chestplate.getItemMeta();
         chestplateMeta.setColor(Color.fromRGB(18, 18, 18));
         chestplateMeta.displayName(Chat.halloween("Reaper's Torso"));
+        Item.lore(chestplateMeta, "Halloween 2021");
         chestplate.setItemMeta(chestplateMeta);
 
         ItemStack skull = new ItemStack(Material.PLAYER_HEAD);
@@ -28,11 +30,13 @@ public class Reaper {
             skullMeta.setOwner("Deathhhh");
         }
         skullMeta.displayName(Chat.halloween("Reaper's Head"));
+        Item.lore(skullMeta, "Halloween 2021");
         skull.setItemMeta(skullMeta);
 
         ItemStack scythe = new ItemStack(Material.IRON_HOE);
         ItemMeta scytheMeta = scythe.getItemMeta();
         scytheMeta.displayName(Chat.halloween("Reaper's Scythe"));
+        Item.lore(scytheMeta, "Halloween 2021");
         scythe.setItemMeta(scytheMeta);
 
         entity.setInvisible(true);

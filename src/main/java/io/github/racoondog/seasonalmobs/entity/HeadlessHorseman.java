@@ -1,6 +1,7 @@
 package io.github.racoondog.seasonalmobs.entity;
 
 import io.github.racoondog.seasonalmobs.util.Chat;
+import io.github.racoondog.seasonalmobs.util.Item;
 import io.github.racoondog.seasonalmobs.util.Math;
 import org.bukkit.*;
 import org.bukkit.entity.EntityType;
@@ -20,12 +21,20 @@ public class HeadlessHorseman {
 
         Skeleton skeleton = (Skeleton) world.spawnEntity(location, EntityType.SKELETON);
 
+        setup(skeleton);
+    }
+
+    public static void setup(Skeleton entity) {
+        World world = entity.getWorld();
+        Location location = entity.getLocation();
+
         int random = Math.randomNumberInRange(1, 5);
 
         ItemStack chestplate = new ItemStack(Material.LEATHER_CHESTPLATE);
         LeatherArmorMeta meta = (LeatherArmorMeta) chestplate.getItemMeta();
         meta.setColor(Color.fromRGB(255, 255, 255));
         meta.displayName(Chat.halloween("Horseman's Torso"));
+        Item.lore(meta, "Halloween 2021");
         chestplate.setItemMeta(meta);
 
         ItemStack leggings = new ItemStack(Material.LEATHER_LEGGINGS);
@@ -39,26 +48,27 @@ public class HeadlessHorseman {
         ItemStack sword = new ItemStack(Material.IRON_SWORD);
         ItemMeta swordMeta = sword.getItemMeta();
         swordMeta.displayName(Chat.halloween("Horseman's Sword"));
+        Item.lore(swordMeta, "Halloween 2021");
         sword.setItemMeta(swordMeta);
 
-        skeleton.setInvisible(true);
-        skeleton.setSilent(true);
-        skeleton.addScoreboardTag("2021Horseman");
+        entity.setInvisible(true);
+        entity.setSilent(true);
+        entity.addScoreboardTag("2021Horseman");
 
-        skeleton.getEquipment().setChestplate(chestplate);
-        skeleton.getEquipment().setItemInMainHand(sword);
-        skeleton.getEquipment().setLeggings(leggings);
-        skeleton.getEquipment().setBoots(boots);
+        entity.getEquipment().setChestplate(chestplate);
+        entity.getEquipment().setItemInMainHand(sword);
+        entity.getEquipment().setLeggings(leggings);
+        entity.getEquipment().setBoots(boots);
 
         if (random == 1) {
-            skeleton.getEquipment().setItemInMainHand(new ItemStack(Material.SKELETON_SKULL));
+            entity.getEquipment().setItemInMainHand(new ItemStack(Material.SKELETON_SKULL));
         } else {
             ZombieHorse horse = (ZombieHorse) world.spawnEntity(location, EntityType.ZOMBIE_HORSE);
-            horse.addPassenger(skeleton);
+            horse.addPassenger(entity);
         }
         world.playSound(location, Sound.ENTITY_SKELETON_AMBIENT, 2, 0);
-        skeleton.getEquipment().setHelmet(new ItemStack(Material.AIR));
-        skeleton.setFireTicks(-1);
-        skeleton.setVisualFire(false);
+        entity.getEquipment().setHelmet(new ItemStack(Material.AIR));
+        entity.setFireTicks(-1);
+        entity.setVisualFire(false);
     }
 }

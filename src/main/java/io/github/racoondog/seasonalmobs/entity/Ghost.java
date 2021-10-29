@@ -1,6 +1,7 @@
 package io.github.racoondog.seasonalmobs.entity;
 
 import io.github.racoondog.seasonalmobs.util.Chat;
+import io.github.racoondog.seasonalmobs.util.Item;
 import org.bukkit.*;
 import org.bukkit.entity.Zombie;
 import org.bukkit.inventory.ItemStack;
@@ -13,12 +14,14 @@ public class Ghost {
         LeatherArmorMeta leatherMeta = (LeatherArmorMeta) chestplate.getItemMeta();
         leatherMeta.setColor(Color.fromRGB(227, 227, 227));
         leatherMeta.displayName(Chat.halloween("Ghost's Torso"));
+        Item.lore(leatherMeta, "Halloween 2021");
         chestplate.setItemMeta(leatherMeta);
 
         ItemStack skull = new ItemStack(Material.PLAYER_HEAD);
         SkullMeta skullMeta = (SkullMeta) skull.getItemMeta();
         skullMeta.setOwner("LattyGhost");
         skullMeta.displayName(Chat.halloween("Ghost's Head"));
+        Item.lore(skullMeta, "Halloween 2021");
         skull.setItemMeta(skullMeta);
 
         entity.setInvisible(true);
