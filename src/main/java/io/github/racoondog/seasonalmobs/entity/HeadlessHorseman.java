@@ -30,26 +30,11 @@ public class HeadlessHorseman {
 
         int random = Math.randomNumberInRange(1, 5);
 
-        ItemStack chestplate = new ItemStack(Material.LEATHER_CHESTPLATE);
+        ItemStack chestplate = chestplate();
         LeatherArmorMeta meta = (LeatherArmorMeta) chestplate.getItemMeta();
-        meta.setColor(Color.fromRGB(255, 255, 255));
-        meta.displayName(Chat.halloween("Horseman's Torso"));
-        Item.lore(meta, "Halloween 2021");
-        chestplate.setItemMeta(meta);
-
-        ItemStack leggings = new ItemStack(Material.LEATHER_LEGGINGS);
-        meta.displayName(Chat.halloween("Horseman's Legs"));
-        leggings.setItemMeta(meta);
-
-        ItemStack boots = new ItemStack(Material.LEATHER_BOOTS);
-        meta.displayName(Chat.halloween("Horseman's Feet"));
-        boots.setItemMeta(meta);
-
-        ItemStack sword = new ItemStack(Material.IRON_SWORD);
-        ItemMeta swordMeta = sword.getItemMeta();
-        swordMeta.displayName(Chat.halloween("Horseman's Sword"));
-        Item.lore(swordMeta, "Halloween 2021");
-        sword.setItemMeta(swordMeta);
+        ItemStack leggings = leggings(meta);
+        ItemStack boots = boots(meta);
+        ItemStack sword = sword();
 
         entity.setInvisible(true);
         entity.setSilent(true);
@@ -70,5 +55,64 @@ public class HeadlessHorseman {
         entity.getEquipment().setHelmet(new ItemStack(Material.AIR));
         entity.setFireTicks(-1);
         entity.setVisualFire(false);
+    }
+
+    public static ItemStack chestplate() {
+        ItemStack chestplate = new ItemStack(Material.LEATHER_CHESTPLATE);
+        LeatherArmorMeta meta = (LeatherArmorMeta) chestplate.getItemMeta();
+        meta.setColor(Color.fromRGB(255, 255, 255));
+        meta.displayName(Chat.halloween("Horseman's Torso"));
+        Item.lore(meta, "Halloween 2021");
+        chestplate.setItemMeta(meta);
+
+        return chestplate;
+    }
+
+    public static ItemStack leggings() {
+        ItemStack leggings = new ItemStack(Material.LEATHER_LEGGINGS);
+        LeatherArmorMeta meta = (LeatherArmorMeta) leggings.getItemMeta();
+        meta.setColor(Color.fromRGB(255, 255, 255));
+        meta.displayName(Chat.halloween("Horseman's Legs"));
+        Item.lore(meta, "Halloween 2021");
+        leggings.setItemMeta(meta);
+
+        return leggings;
+    }
+
+    public static ItemStack leggings(LeatherArmorMeta meta) {
+        ItemStack leggings = new ItemStack(Material.LEATHER_LEGGINGS);
+        meta.displayName(Chat.halloween("Horseman's Legs"));
+        leggings.setItemMeta(meta);
+
+        return leggings;
+    }
+
+    public static ItemStack boots() {
+        ItemStack boots = new ItemStack(Material.LEATHER_BOOTS);
+        LeatherArmorMeta meta = (LeatherArmorMeta) boots.getItemMeta();
+        meta.setColor(Color.fromRGB(255, 255, 255));
+        meta.displayName(Chat.halloween("Horseman's Feet"));
+        Item.lore(meta, "Halloween 2021");
+        boots.setItemMeta(meta);
+
+        return boots;
+    }
+
+    public static ItemStack boots(LeatherArmorMeta meta) {
+        ItemStack boots = new ItemStack(Material.LEATHER_BOOTS);
+        meta.displayName(Chat.halloween("Horseman's Feet"));
+        boots.setItemMeta(meta);
+
+        return boots;
+    }
+
+    public static ItemStack sword() {
+        ItemStack sword = new ItemStack(Material.IRON_SWORD);
+        ItemMeta swordMeta = sword.getItemMeta();
+        swordMeta.displayName(Chat.halloween("Horseman's Sword"));
+        Item.lore(swordMeta, "Halloween 2021");
+        sword.setItemMeta(swordMeta);
+
+        return sword;
     }
 }

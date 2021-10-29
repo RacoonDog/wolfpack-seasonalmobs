@@ -10,19 +10,8 @@ import org.bukkit.inventory.meta.SkullMeta;
 
 public class Ghost {
     public static void spawn(Zombie entity) {
-        ItemStack chestplate = new ItemStack(Material.LEATHER_CHESTPLATE);
-        LeatherArmorMeta leatherMeta = (LeatherArmorMeta) chestplate.getItemMeta();
-        leatherMeta.setColor(Color.fromRGB(227, 227, 227));
-        leatherMeta.displayName(Chat.halloween("Ghost's Torso"));
-        Item.lore(leatherMeta, "Halloween 2021");
-        chestplate.setItemMeta(leatherMeta);
-
-        ItemStack skull = new ItemStack(Material.PLAYER_HEAD);
-        SkullMeta skullMeta = (SkullMeta) skull.getItemMeta();
-        skullMeta.setOwner("LattyGhost");
-        skullMeta.displayName(Chat.halloween("Ghost's Head"));
-        Item.lore(skullMeta, "Halloween 2021");
-        skull.setItemMeta(skullMeta);
+        ItemStack chestplate = chestplate();
+        ItemStack skull = skull();
 
         entity.setInvisible(true);
         entity.setSilent(true);
@@ -38,5 +27,27 @@ public class Ghost {
         } else {
             world.playSound(location, Sound.ENTITY_ELDER_GUARDIAN_HURT, 2, 0);
         }
+    }
+
+    public static ItemStack chestplate() {
+        ItemStack chestplate = new ItemStack(Material.LEATHER_CHESTPLATE);
+        LeatherArmorMeta leatherMeta = (LeatherArmorMeta) chestplate.getItemMeta();
+        leatherMeta.setColor(Color.fromRGB(227, 227, 227));
+        leatherMeta.displayName(Chat.halloween("Ghost's Torso"));
+        Item.lore(leatherMeta, "Halloween 2021");
+        chestplate.setItemMeta(leatherMeta);
+
+        return chestplate;
+    }
+
+    public static ItemStack skull() {
+        ItemStack skull = new ItemStack(Material.PLAYER_HEAD);
+        SkullMeta skullMeta = (SkullMeta) skull.getItemMeta();
+        skullMeta.setOwner("LattyGhost");
+        skullMeta.displayName(Chat.halloween("Ghost's Head"));
+        Item.lore(skullMeta, "Halloween 2021");
+        skull.setItemMeta(skullMeta);
+
+        return skull;
     }
 }
