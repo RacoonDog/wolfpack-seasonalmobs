@@ -3,13 +3,3 @@ main: io.github.racoondog.seasonalmobs.SeasonalMobs
 version: 1.0
 api-version: 1.17
 author: Crosby
-commands:
-  giveseasonal:
-    description: Give
-    usage: /give
-    permission: seasonalmobs.give
-permissions:
-  seasonalmobs.*:
-  seasonalmobs.giveseasonal:
-  seasonalmobs.giveseasonal.others:
-  seasonalmobs.summonseasonal:
