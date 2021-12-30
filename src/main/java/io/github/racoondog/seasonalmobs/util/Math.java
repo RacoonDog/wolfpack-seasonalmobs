@@ -2,7 +2,7 @@ package io.github.racoondog.seasonalmobs.util;
 
 import java.util.Random;
 
-public class Math {
+public final class Math {
     private static final Random random = new Random();
 
     public static int randomNumberInRange(int min, int max) {

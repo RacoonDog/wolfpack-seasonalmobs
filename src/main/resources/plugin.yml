@@ -1,5 +1,5 @@
 name: SeasonalMobs
+version: '${project.version}'
 main: io.github.racoondog.seasonalmobs.SeasonalMobs
-version: 1.0
-api-version: 1.17
+api-version: 1.18
 author: Crosby

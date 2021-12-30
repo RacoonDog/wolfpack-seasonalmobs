@@ -5,16 +5,16 @@ import org.bukkit.inventory.meta.ItemMeta;
 
 import java.util.ArrayList;
 
-public class Item {
+public final class Item {
     public static void lore(ItemMeta meta, String msg) {
-        Component text = Chat.lore(msg);
+        final Component text = Chat.lore(msg);
         ArrayList<Component> lore;
         if (meta.hasLore()) {
             lore = (ArrayList<Component>) meta.lore();
+            if (lore == null) lore = new ArrayList<>();
         } else {
-            lore = new ArrayList<Component>();
+            lore = new ArrayList<>();
         }
-        assert lore != null;
         lore.add(text);
         meta.lore(lore);
     }
